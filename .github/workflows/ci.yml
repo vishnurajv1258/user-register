@@ -1,0 +1,36 @@
+name: User-Register CI with Maven (JDK 21)
+# 0. Branch name which needs to run the pipe line tasks
+on:
+  push:
+    branches: [ "main","user-register", "feature/**" ]
+
+jobs:
+  build-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+    # 1. Pull the code from your repository into the runner
+    - name: Checkout Code
+      uses: actions/checkout@v4
+
+    # 2. Setup the Java 21 environment
+    - name: Set up JDK 21
+      uses: actions/setup-java@v4
+      with:
+        java-version: '21'
+        distribution: 'temurin' # Eclipse Temurin is the industry standard for OpenJDK
+        cache: 'maven'          # Automatically caches your ~/.m2 dependencies
+
+    # 3. Build and run tests
+    # We use 'verify' instead of 'package' because it includes integration tests
+    - name: Build and Test with Maven
+      run: mvn -B verify --file pom.xml
+
+    # 4. Optional: Save the JAR file if the build succeeds
+    - name: Upload Build Artifact
+      if: success()
+      uses: actions/upload-artifact@v4
+      with:
+        name: microservice-executable
+        path: target/*.jar
+        retention-days: 5
