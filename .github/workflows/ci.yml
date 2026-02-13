@@ -33,4 +33,4 @@ jobs:
       with:
         name: microservice-executable
         path: target/*.jar
-        retention-days: 5
+        retention-days: 6
