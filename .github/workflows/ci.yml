@@ -24,7 +24,7 @@ jobs:
     # 3. Build and run tests
     # We use 'verify' instead of 'package' because it includes integration tests
     - name: Build and Test with Maven
-      run: mvn -B verify --file pom.xml
+      run: mvn -B verify --file pom.xml -Dspring.profiles.active=test
 
     # 4. Optional: Save the JAR file if the build succeeds
     - name: Upload Build Artifact
