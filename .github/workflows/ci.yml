@@ -28,8 +28,8 @@ jobs:
       run: >
         mvn -B verify sonar:sonar 
         -Dspring.profiles.active=test 
-        -Dsonar.projectKey=your_project_key 
-        -Dsonar.projectName='User-Register Service'
+        -Dsonar.projectKey=vishnurajv1258_user-register
+        -Dsonar.projectName='user-register'
 
     - name: Upload Build Artifact
       if: success()
