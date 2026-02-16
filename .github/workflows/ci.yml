@@ -22,9 +22,9 @@ jobs:
 
     - name: Build and Analyze
       env:
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+        SONAR_TOKEN: eb5f15aa821183f571ecc33890f00296aad90583
         # If using SonarCloud, SONAR_HOST_URL is optional as it defaults to sonarcloud.io
-        SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }} 
+        SONAR_HOST_URL: https://sonarcloud.io/
       run: >
         mvn -B verify sonar:sonar 
         -Dspring.profiles.active=test 
