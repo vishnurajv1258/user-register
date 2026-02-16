@@ -30,6 +30,7 @@ jobs:
         -Dspring.profiles.active=test 
         -Dsonar.projectKey=vishnurajv1258_user-register
         -Dsonar.projectName='user-register'
+        -Dsonar.organization=vishnurajv1258
 
     - name: Upload Build Artifact
       if: success()
